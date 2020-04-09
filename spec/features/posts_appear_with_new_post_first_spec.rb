@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require 'rails_helper'
-require_relative '../support/helpers.rb'
+# require_relative '../support/helpers.rb'
 
 RSpec.feature 'Timeline', type: :feature do
   scenario 'Posts appear in chronological order' do
