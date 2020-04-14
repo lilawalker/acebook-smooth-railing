@@ -1,4 +1,10 @@
 FactoryBot.define do
+  factory :comment do
+    comment_text { "MyString" }
+    user { nil }
+    post { nil }
+  end
+
   factory :user do
     id { 1 }
     email { "fake@email.com" }
