@@ -20,11 +20,24 @@
 
 require 'simplecov'
 require 'simplecov-console'
+require 'factory_bot'
+require_relative './factories.rb'
 require_relative './support/log_in_helper.rb'
 require_relative './support/sign_up_helper.rb'
 require_relative './support/helpers'
 
-SimpleCov.start 'rails'
+
+SimpleCov.start 'rails' do
+  add_filter '/bin/'
+  add_filter '/db/'
+  add_filter '/spec/' # for rspec
+  add_filter '/test/' # for minitest
+  add_filter '/app/jobs' # for rails files
+  add_filter '/app/mailers'
+  add_filter '/app/channels'
+  add_filter '/app/helpers'
+end
+
 SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter.new([
                                                                  SimpleCov::Formatter::Console
                                                                  # Want a nice code coverage website? Uncomment this next line!
@@ -68,6 +81,8 @@ RSpec.configure do |config|
   # triggering implicit auto-inclusion in groups with matching metadata.
   config.shared_context_metadata_behavior = :apply_to_host_groups
   config.include PostHelper, type: :feature
+
+  config.include FactoryBot::Syntax::Methods
 
   # The settings below are suggested to provide a good initial experience
   config.include LogInHelper, type: :feature
