@@ -2,6 +2,7 @@
 <div>
   <%= simple_format post.message %>
   <p><%=  post.created_at %></p>
+  <div><%= link_to destroy_post_path %></div>
   </div>
 <% end %>
 
