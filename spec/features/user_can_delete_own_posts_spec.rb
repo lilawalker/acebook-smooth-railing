@@ -2,7 +2,7 @@ require 'rails_helper'
 require_relative '../support/post_helper.rb'
 
 RSpec.feature 'Delete Post', type: :feature do
-  scenario 'user can delete their own post' do
+  xscenario 'user can delete their own post' do
     user = FactoryBot.create(:user)
     log_in(user)
     add_post('This is a new post')
