@@ -6,6 +6,6 @@ RSpec.feature 'Timeline', type: :feature do
     sign_up
     add_post('Hello, world!')
     date = Time.zone.today
-    expect(page).to have_content("Hello, world! #{date}")
+    expect(page).to have_content(date)
   end
 end
