@@ -1,5 +1,4 @@
 require 'rails_helper'
-# require_relative '../../app/models/user'
 
 RSpec.describe PostsController, type: :controller do
 
@@ -19,7 +18,6 @@ RSpec.describe PostsController, type: :controller do
     end
 
     it 'creates a post' do
-      # user :create, params: { user: { email: 'ruby@rails.com', password: 'Password', password_confirmation: 'Password'} }
       post :create, params: { post: { message: 'Hello, world!' } }
       expect(Post.find_by(message: 'Hello, world!')).to be
     end
