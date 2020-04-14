@@ -1,6 +1,7 @@
 <% @posts.each do |post| %>
 <div>
   <%= simple_format post.message %>
+  <p><%=  post.user.name %></p>
   <p><%=  post.created_at %></p>
   </div>
 <% end %>
