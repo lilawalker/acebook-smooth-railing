@@ -1,7 +1,11 @@
 <% @posts.each do |post| %>
-<div>
+<div class='<%=post.id %>'>
   <%= simple_format post.message %>
   <p><%=  post.created_at %></p>
+  <h2>Comments</h2>
+ <%= link_to new_comment_path do %>
+ New comment
+ <% end %>
   </div>
 <% end %>
 
