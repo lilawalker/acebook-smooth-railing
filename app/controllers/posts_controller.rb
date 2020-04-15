@@ -18,7 +18,6 @@ class PostsController < ApplicationController
     find_post_by_id
     if @post.user_id == current_user.id
       @post.destroy
-      # redirect_to(:posts)
       respond_to do |format|
         format.html { redirect_to posts_url, notice: 'Post was successfully destroyed.' }
       end
