@@ -37,7 +37,7 @@ class PostsController < ApplicationController
     find_post_by_id
     if @post.user_id == current_user.id
       if time_limit?
-        @post.update
+        @post.update(message: params[:message])
         respond_to do |format|
           format.html { redirect_to posts_url, alert: 'Post successfully updated' }
         end
