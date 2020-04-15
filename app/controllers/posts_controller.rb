@@ -13,10 +13,9 @@ class PostsController < ApplicationController
   def index
     @posts = Post.order(:created_at).reverse_order
   end
-  
+
   def destroy
     find_post_by_id
-    p @post
     if @post.user_id == current_user.id
       @post.destroy
       # redirect_to(:posts)
@@ -27,8 +26,31 @@ class PostsController < ApplicationController
       respond_to do |format|
         format.html { redirect_to posts_url, alert: 'Error. You can only delete your own posts!' }
       end
-    end  
-      
+    end
+  end
+
+  def edit
+    @post = Post.find(params[:id])
+  end
+
+  def update
+    find_post_by_id
+    if @post.user_id == current_user.id
+      if time_limit?
+        @post.update
+        respond_to do |format|
+          format.html { redirect_to posts_url, alert: 'Post successfully updated' }
+        end
+      else
+      respond_to do |format|
+        format.html { redirect_to posts_url, alert: 'Error. You have ran out of time!' }
+      end
+      end
+    else
+      respond_to do |format|
+        format.html { redirect_to posts_url, alert: 'Error. You can only delete your own posts!' }
+      end
+    end
   end
 
   private
@@ -39,6 +61,15 @@ class PostsController < ApplicationController
 
   def find_post_by_id
     @post = Post.find(params[:id])
+  end
+
+  def time_limit?
+    timediff = Time.now - @post.created_at
+    if timediff > 600000
+      return false
+    else
+      return true
+    end
   end
 
 end

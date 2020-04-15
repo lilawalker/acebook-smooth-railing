@@ -3,7 +3,8 @@
   <%= simple_format post.message %>
   <p><%=  post.user.name %></p>
   <p id="<%=post.id%>" ><%=  post.created_at %></p>
-  <p><%= link_to 'Delete post', post_path(post), method: :delete %></p>  
+  <tr><%= link_to 'Delete post', post_path(post), method: :delete %></tr>
+  <tr><%= link_to 'Edit post', edit_post_path(post) %></tr>
   </div>
 <% end %>
 
