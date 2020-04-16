@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" charset="utf-8"></script>
+    <link rel = "stylesheet" type = "text/css" href = "https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" />
     <title>Acebook</title>
     <%= csrf_meta_tags %>
 
@@ -10,7 +10,9 @@
   </head>
 
   <body>
+    <div class="container">
     <%= render 'layouts/alerts' %>
     <%= yield %>
+    </div>
   </body>
 </html>
