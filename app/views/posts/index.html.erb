@@ -2,14 +2,24 @@
 <div class='<%=post.id %>'>
   <%= simple_format post.message %>
   <p><%=  post.created_at %></p>
-  |<% if !post.blank? %>
-  <h2>Comments</h2>
- <%= link_to new_post_comment_path(post.id) do %>
-  New comment
+  
+</div>
+  <h3>Comment on This Post</h3>
+  <%= form_for [post, Comment.new] do |f| %>
+    <%= f.text_area :comment_text %><br>
+    <%= f.hidden_field :post_id, value: post.id %>
+    <%= f.submit %>
   <% end %>
- <% end %>
-  </div>
+<h4>Comments:</h4>
+  <ul>
+  <% post.comments.each do |comment| %>
+    <li><%= comment.comment_text %></li>
+    <% end %>
+  </ul>
 <% end %>
+
+
+
 
 <% if user_signed_in? %>
   <%= link_to new_post_path do %>
