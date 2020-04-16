@@ -1,6 +1,10 @@
 <h1>Editing Comment</h1>
 
-<%= render 'form', comment: @comment %>
+  <%= p @comment %>
+<%= form_for @comment, html: { method: :put } do |form| %>
+  <%= form.label :comment_text %>
+  <%= form.text_area :comment_text %>
 
-<%= link_to 'Show', @comment %> |
-<%= link_to 'Back', comments_path %>
+  <%= form.submit "Update" %>
+<% end %>
+

@@ -13,9 +13,6 @@ class CommentsController < ApplicationController
     @comment = Comment.new
   end
 
-  def edit
-  end
-
   def create
     @comment = Comment.create(comment_params)
     @comment.user_id = current_user.id
@@ -29,14 +26,26 @@ class CommentsController < ApplicationController
     end
   end
 
+def edit
+    @comment = Comment.find(params[:id])
+  end
+
   def update
-    respond_to do |format|
-      if @comment.update(comment_params)
-        format.html { redirect_to posts_url, notice: 'Comment was successfully updated.' }
-        format.json { render :show, status: :ok, location: @comment }
+    set_comment
+    if @comment.user_id == current_user.id
+      if time_limit?
+        @comment.update(comment_params)
+        respond_to do |format|
+          format.html { redirect_to posts_url, alert: 'Comment successfully updated' }
+        end
       else
-        format.html { render :edit }
-        format.json { render json: @comment.errors, status: :unprocessable_entity }
+      respond_to do |format|
+        format.html { redirect_to posts_url, alert: 'Error. Time limit for editing comments exceeded!' }
+      end
+      end
+    else
+      respond_to do |format|
+        format.html { redirect_to posts_url, alert: 'Error. You can only delete your own comments!' }
       end
     end
   end
@@ -68,4 +77,14 @@ class CommentsController < ApplicationController
   def comment_params
     params.require(:comment).permit(:comment_text, :post_id)
   end
+
+  def time_limit?
+    timediff = Time.now - @comment.created_at
+    if timediff > 600000
+      return false
+    else
+      return true
+    end
+  end
+
 end

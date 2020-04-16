@@ -21,6 +21,7 @@
     <li><%= comment.comment_text %></li>
     <p id='<%= comment.id %>'></p>
     <tr><%= link_to 'Delete comment', post_comment_path(post, comment), method: :delete %></tr>
+    <tr><%= link_to 'Edit comment', edit_post_comment_path(post, comment) %></tr>
     <% end %>
     </div>
   </ul>
