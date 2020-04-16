@@ -13,4 +13,11 @@
  *= require_tree .
  *= require_self
  */
-/* 
+.ace-title {font-family: 'Permanent Marker', cursive;}
+.alert-danger {
+
+    display: inline-block;
+}
+.alert-danger:empty {
+   display: none;
+}

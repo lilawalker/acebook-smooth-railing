@@ -1,0 +1,3 @@
+.alert-danger:empty {
+   display: none;
+}
