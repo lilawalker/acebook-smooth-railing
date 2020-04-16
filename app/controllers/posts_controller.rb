@@ -42,7 +42,7 @@ class PostsController < ApplicationController
         end
       else
       respond_to do |format|
-        format.html { redirect_to posts_url, alert: 'Error. You have ran out of time!' }
+        format.html { redirect_to posts_url, alert: 'Error. Time limit for editing posts exceeded!' }
       end
       end
     else
