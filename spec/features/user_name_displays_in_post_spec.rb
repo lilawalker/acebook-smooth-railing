@@ -1,5 +1,5 @@
 require 'rails_helper'
-require_relative '../support/helpers.rb'
+require_relative '../support/post_helper.rb'
 
 RSpec.feature 'posts', type: :feature do
   scenario 'user name displays on posts' do
