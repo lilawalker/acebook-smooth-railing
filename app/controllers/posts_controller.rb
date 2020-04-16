@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class PostsController < ApplicationController
+  layout "posts"
+
   def new
     @post = Post.new
   end

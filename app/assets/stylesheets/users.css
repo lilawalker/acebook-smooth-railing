@@ -1,0 +1,18 @@
+// Place all the styles related to the Users controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.ace-title {font-family: 'Permanent Marker', cursive;}
+ body{background: url(/background-1789175.png);
+font-size: 1.2rem;
+ }
+.log-in{background: #ffffff7a;
+    display: inline-block;
+    padding: 30px;
+    border-radius: 10px;
+}
+
+.login-links a {color: black;
+    font-size: x-large;
+    font-weight: 700;}
