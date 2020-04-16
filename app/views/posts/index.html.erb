@@ -17,8 +17,12 @@
 <h4>Comments:</h4>
   <ul>
   <% post.comments.each do |comment| %>
+    <div class='<%= comment.id %>'>
     <li><%= comment.comment_text %></li>
+    <p id='<%= comment.id %>'></p>
+    <tr><%= link_to 'Delete comment', post_comment_path(post, comment), method: :delete %></tr>
     <% end %>
+    </div>
   </ul>
 <% end %>
 
