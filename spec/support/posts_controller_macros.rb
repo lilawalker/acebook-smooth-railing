@@ -10,5 +10,11 @@ FactoryBot.define do
       end
     end
 
+    def mock_post
+      before(:each) do
+        post = FactoryBot.create(:post)
+      end
+    end
+
   end
 end
