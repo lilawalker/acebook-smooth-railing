@@ -1,7 +1,6 @@
 <h1>Editing Comment</h1>
 
-  <%= p @comment %>
-<%= form_for @comment, html: { method: :put } do |form| %>
+<%= form_for ([@post, @comment]), html: { method: :put } do |form| %>
   <%= form.label :comment_text %>
   <%= form.text_area :comment_text %>
 

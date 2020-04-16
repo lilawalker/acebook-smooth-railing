@@ -18,10 +18,10 @@
   <ul>
   <% post.comments.each do |comment| %>
     <div class='<%= comment.id %>'>
-    <li><%= comment.comment_text %></li>
+    <li><%= comment.comment_text %><br><%= comment.user.name + " commented " + time_ago_in_words(comment.created_at) + " ago." %></li>
     <p id='<%= comment.id %>'></p>
     <tr><%= link_to 'Delete comment', post_comment_path(post, comment), method: :delete %></tr>
-    <tr><%= link_to 'Edit comment', edit_post_comment_path(post, comment) %></tr>
+    <tr><%= link_to 'Edit comment', edit_post_comment_path(post, comment), method: :get %></tr>
     <% end %>
     </div>
   </ul>

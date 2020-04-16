@@ -28,6 +28,7 @@ class CommentsController < ApplicationController
 
 def edit
     @comment = Comment.find(params[:id])
+    @post = Post.find(params[:post_id])
   end
 
   def update
@@ -45,7 +46,7 @@ def edit
       end
     else
       respond_to do |format|
-        format.html { redirect_to posts_url, alert: 'Error. You can only delete your own comments!' }
+        format.html { redirect_to posts_url, alert: 'Error. You can only edit your own comments!' }
       end
     end
   end
@@ -71,7 +72,9 @@ def edit
   end
 
   def set_comment
+    p params
     @comment = Comment.find(params[:id])
+    
   end
 
   def comment_params
