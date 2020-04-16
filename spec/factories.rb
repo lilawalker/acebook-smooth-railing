@@ -15,6 +15,6 @@ FactoryBot.define do
   factory :post do
     id { 1 }
     message { "This is an example post" }
-    user_id { 1 }
+    user_id { 1 } 
   end
 end
