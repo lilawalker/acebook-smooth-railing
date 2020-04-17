@@ -32,4 +32,11 @@
     <%= f.submit class: 'btn btn-success' %>
   <% end %>
   </div>
+
+<% end %>
+
+<% if user_signed_in? %>
+  <%= link_to new_post_path do %>
+    New post
+  <% end %>
 <% end %>

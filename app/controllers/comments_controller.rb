@@ -1,7 +1,7 @@
 class CommentsController < ApplicationController
   before_action :set_comment, only: [:show, :edit, :update, :destroy]
   before_action :set_post, only: [:new, :create]
-layout "posts"
+  layout "posts"
   def index
     @comments = Comment.all
   end
@@ -26,7 +26,7 @@ layout "posts"
     end
   end
 
-def edit
+  def edit
     @comment = Comment.find(params[:id])
     @post = Post.find(params[:post_id])
   end
@@ -40,9 +40,9 @@ def edit
           format.html { redirect_to posts_url, alert: 'Comment successfully updated' }
         end
       else
-      respond_to do |format|
-        format.html { redirect_to posts_url, alert: 'Error. Time limit for editing comments exceeded!' }
-      end
+        respond_to do |format|
+          format.html { redirect_to posts_url, alert: 'Error. Time limit for editing comments exceeded!' }
+        end
       end
     else
       respond_to do |format|
@@ -82,8 +82,8 @@ def edit
   end
 
   def time_limit?
-    timediff = Time.now - @comment.created_at
-    if timediff > 600000
+    timediff = Time.zone.now - @comment.created_at
+    if timediff > 600_000
       return false
     else
       return true
