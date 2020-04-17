@@ -1,9 +1,25 @@
 <% @posts.each do |post| %>
-<div>
+<div class='<%=post.id %>'>
   <%= simple_format post.message %>
   <p><%=  post.user.name %></p>
   <p><%=  post.created_at %></p>
-  </div>
+  <p id="<%=post.id%>" ></p>
+  <tr><%= link_to 'Delete post', post_path(post), method: :delete %></tr>
+  <tr><%= link_to 'Edit post', edit_post_path(post) %></tr>
+</div>
+
+  <h3>Comment on This Post</h3>
+  <%= form_for [post, Comment.new] do |f| %>
+    <%= f.text_area :comment_text %><br>
+    <%= f.hidden_field :post_id, value: post.id %>
+    <%= f.submit %>
+  <% end %>
+<h4>Comments:</h4>
+  <ul>
+  <% post.comments.each do |comment| %>
+    <li><%= comment.comment_text %></li>
+    <% end %>
+  </ul>
 <% end %>
 
 <% if user_signed_in? %>
