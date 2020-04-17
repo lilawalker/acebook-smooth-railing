@@ -9,3 +9,19 @@ font-size: xx-large;}
 .card-link+.card-link {
     margin-left: 0rem;
 }
+
+ul{list-style: none;
+padding: 0px;}
+
+.list-comments .card{
+  padding: 10px;
+}
+.comment-time{font-style: italic;}
+
+p{font-size: 17px;}
+
+.container {margin-top: 10px;}
+
+.card-text{font-size: 22px}
+
+.comment-text{font-size: 22px;}
