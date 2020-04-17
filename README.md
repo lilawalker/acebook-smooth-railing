@@ -9,7 +9,8 @@ Visit our blog [here](https://medium.com/smooth-railing-blog) to see more about 
 
 ## Getting Started
 
-Ensure you have the following setup on your machine:
+If you want to run the application locally, ensure you have the following setup on your machine:
+- Rails
 - Bundler
 - PostgreSQL
 
@@ -19,13 +20,12 @@ Clone this repository. Then install dependencies and migrate the database as fol
 $ bundle install
 $ rails db:create
 $ rails db:migrate
-$ rails db:migrate RAILS_ENV=test
 ```
 To run the project, start up the rails server
 ```
 $ rails server
 ```
-Then navigate to localhost:3000 in your browser
+Then navigate to **localhost:3000** in your browser
 
 ## Dependencies
 
@@ -38,31 +38,29 @@ This project relies on the following Rails Gems:
 Travis CI is setup to run tests and linting upon each GitHub commit.
 
 This project is setup with:
-- RSpec
-- SimpleCov
-- Rubocop
-- Travis CI
+- RSpec (for testing)
+- SimpleCov (for test coverage)
+- Rubocop (for linting)
 
 To run the tests:
 ```
+$ rails db:migrate RAILS_ENV=test
 $ bundle exec rspec
 $ bundle exec rubocop
 ```
-___
 
 ## Deployment
 
-The app is deployed via Heroku. [Click here](https://acebook-smooth-railing.herokuapp.com/) to see it in all it's glory!
+The app is deployed via Heroku. [Click here](https://acebook-smooth-railing.herokuapp.com/) to see it in all its glory!
 
 If all tests pass, commits on the master branch are automatically deployed to Heroku via Travis
-___
 
 ## Criteria for Building the Project
 
 #### Domain Model
 
 | Models        | Methods                     | State  |
-| ------------- |:-------------              | :-----|
+| :------------- |:-------------              | :-----|
 | Users         | sign_up, sign_in, sign_out  | name, email, password |
 | Posts     | CRUD                       | message, user_id   |
 | Comments     | CRUD                       | comment_text, user_id, post_id   |
@@ -152,7 +150,7 @@ I would like to see a helpful error message if I try to edit someone else's comm
 
 ## Team Work
 
-This project wouldn't have come together without the hard work and dedication of each member of the team. Every day we held stand ups and retros, using Trello boards to detail our progress. After estimating the tickets and dividing the work amongst us, we split off into pairs for the day and tackled the work. If teams got blocked, we would mob together to solve problems so that we could all move forward.
+This project wouldn't have come together without the hard work and dedication of each member of the team. Every day we held stand ups and retros, using Trello boards to detail our progress. After estimating the tickets and dividing up the work amongst us, we split off into pairs for the day and tackled the work. If teams got blocked, we would mob together to solve problems so that we could all move forward.
 
 We adhered to a [team charter](https://docs.google.com/document/d/19TB6uZP0riW3iNHsxErw-HEYbkYpR3nPl6kFiE9gGjQ/edit) to guide us through the learning process.
 
@@ -160,5 +158,8 @@ We adhered to a [team charter](https://docs.google.com/document/d/19TB6uZP0riW3i
 
 Of course there's never enough time to implement all of your ideas, so here's what we would have done had we had more time:
 
+- No page refresh when adding posts and comments
 - Add an image uploader to the posts feature
--
+- User can create and modify a profile, including a profile image
+- User can add friends
+- User can like posts

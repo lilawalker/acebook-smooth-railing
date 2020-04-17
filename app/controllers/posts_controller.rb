@@ -43,9 +43,9 @@ class PostsController < ApplicationController
           format.html { redirect_to posts_url, alert: 'Post successfully updated' }
         end
       else
-      respond_to do |format|
-        format.html { redirect_to posts_url, alert: 'Error. Time limit for editing posts exceeded!' }
-      end
+        respond_to do |format|
+          format.html { redirect_to posts_url, alert: 'Error. Time limit for editing posts exceeded!' }
+        end
       end
     else
       respond_to do |format|
@@ -65,8 +65,8 @@ class PostsController < ApplicationController
   end
 
   def time_limit?
-    timediff = Time.now - @post.created_at
-    if timediff > 600000
+    timediff = Time.zone.now - @post.created_at
+    if timediff > 600_000
       return false
     else
       return true

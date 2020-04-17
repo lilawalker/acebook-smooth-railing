@@ -26,7 +26,6 @@ require_relative './support/log_in_helper.rb'
 require_relative './support/sign_up_helper.rb'
 require_relative './support/post_helper'
 
-
 SimpleCov.start 'rails' do
   add_filter '/bin/'
   add_filter '/db/'
