@@ -1,6 +1,11 @@
 <%= form_for @post do |form| %>
-  <%= form.label :message %>
-  <%= form.text_area :message %>
-
-  <%= form.submit "Submit" %>
+<div class="log-in">
+<div class="form-group">
+  <%= form.label :message, class: "message-label" %>
+  <%= form.text_area :message, class: "form-control" %>
+    </div>
+      <div class="actions">
+  <%= form.submit "Submit", class: 'btn btn-success' %>
+    </div>
+    </div>
 <% end %>

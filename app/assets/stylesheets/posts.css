@@ -1,3 +1,7 @@
-.alert-danger:empty {
+div:empty {
    display: none;
 }
+.ace-title {font-family: 'Permanent Marker', cursive;}
+
+.message-label{display: block;
+font-size: xx-large;}
