@@ -32,26 +32,23 @@ class PostsController < ApplicationController
 
   def edit
     @post = Post.find(params[:id])
+    if @post.user_id != current_user.id
+      respond_to do |format|
+        format.html { redirect_to posts_url, alert: 'Error. You can only edit your own posts!' }
+      end
+    elsif time_limit?
+      respond_to do |format|
+        format.html { redirect_to posts_url, alert: 'Error. You can only edit posts for 10 minutes!' }
+      end
+    end
   end
 
   def update
     find_post_by_id
-    if @post.user_id == current_user.id
-      if time_limit?
-        @post.update(post_params)
-        respond_to do |format|
-          format.html { redirect_to posts_url, alert: 'Post successfully updated' }
-        end
-      else
-        respond_to do |format|
-          format.html { redirect_to posts_url, alert: 'Error. Time limit for editing posts exceeded!' }
-        end
-      end
-    else
+      @post.update(post_params)
       respond_to do |format|
-        format.html { redirect_to posts_url, alert: 'Error. You can only delete your own posts!' }
+        format.html { redirect_to posts_url, alert: 'Post successfully updated' }
       end
-    end
   end
 
   private
@@ -66,6 +63,7 @@ class PostsController < ApplicationController
 
   def time_limit?
     timediff = Time.zone.now - @post.created_at
+    puts timediff
     if timediff > 600_000
       return false
     else
