@@ -1,30 +1,31 @@
 <% @posts.each do |post| %>
-<div class='<%=post.id %>'>
-  <%= simple_format post.message %>
-  <p><%=  post.user.name %></p>
-  <p><%=  post.created_at %></p>
+<div class='<%=post.id %> card text-center'>
+  <p class="card-text"><%= simple_format post.message %></p>
+  <p>Posted by: <%=  post.user.name %></p>
+  <p><i class="fas fa-clock"></i> Posted at: <%=  post.created_at %></p>
   <p id="<%=post.id%>" ></p>
-  <tr><%= link_to 'Delete post', post_path(post), method: :delete %></tr>
-  <tr><%= link_to 'Edit post', edit_post_path(post) %></tr>
+  <%= link_to 'Delete post', post_path(post), method: :delete, class: "card-link" %>
+  <%= link_to 'Edit post', edit_post_path(post), class: "card-link" %>
 </div>
 
-  <h3>Comment on This Post</h3>
-  <%= form_for [post, Comment.new] do |f| %>
-    <%= f.text_area :comment_text %><br>
-    <%= f.hidden_field :post_id, value: post.id %>
-    <%= f.submit %>
-  <% end %>
+
 <h4>Comments:</h4>
   <ul>
   <% post.comments.each do |comment| %>
     <div class='<%= comment.id %>'>
     <li><%= comment.comment_text %><br><%= comment.user.name + " commented " + time_ago_in_words(comment.created_at) + " ago." %></li>
     <p id='<%= comment.id %>'></p>
-    <tr><%= link_to 'Delete comment', post_comment_path(post, comment), method: :delete %></tr>
-    <tr><%= link_to 'Edit comment', edit_post_comment_path(post, comment), method: :get %></tr>
+    <%= link_to 'Delete comment', post_comment_path(post, comment), method: :delete %>
+    <%= link_to 'Edit comment', edit_post_comment_path(post, comment), method: :get %>
     <% end %>
     </div>
   </ul>
+  <h4>Comment on This Post</h4>
+  <%= form_for [post, Comment.new] do |f| %>
+    <%= f.text_area :comment_text %><br>
+    <%= f.hidden_field :post_id, value: post.id %>
+    <%= f.submit class: 'btn btn-success' %>
+  <% end %>
 <% end %>
 
 <% if user_signed_in? %>

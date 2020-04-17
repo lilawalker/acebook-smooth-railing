@@ -1,9 +1,8 @@
 <h1>Editing Comment</h1>
 
 <%= form_for ([@post, @comment]), html: { method: :put } do |form| %>
-  <%= form.label :comment_text %>
-  <%= form.text_area :comment_text %>
+  <h3<%= form.label :comment_text %></h3>
+  <p><%= form.text_area :comment_text %></p>
 
-  <%= form.submit "Update" %>
+  <%= form.submit "Update", class: "btn btn-success" %>
 <% end %>
-

@@ -5,3 +5,7 @@ div:empty {
 
 .message-label{display: block;
 font-size: xx-large;}
+
+.card-link+.card-link {
+    margin-left: 0rem;
+}

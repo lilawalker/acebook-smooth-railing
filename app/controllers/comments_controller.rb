@@ -1,7 +1,7 @@
 class CommentsController < ApplicationController
   before_action :set_comment, only: [:show, :edit, :update, :destroy]
   before_action :set_post, only: [:new, :create]
-
+layout "posts"
   def index
     @comments = Comment.all
   end
@@ -74,7 +74,7 @@ def edit
   def set_comment
     p params
     @comment = Comment.find(params[:id])
-    
+
   end
 
   def comment_params
